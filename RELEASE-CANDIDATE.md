@@ -1,6 +1,6 @@
 # Sleep fork Windows build candidate — 2026-09-13
 
-Built on Windows x64 from workspace submodule commits `c70624c` (StreamLight) and `8afa3be` (StreamTweak). These are local candidates, not published releases. The StreamLight installer includes the Modern Standby client-sleep fix, validated on the target laptop.
+Built on Windows x64 from workspace submodule commits `c70624c` (StreamLight) and `8afa3be` (StreamTweak). Both installers were published as GitHub prereleases on 2026-09-13. The StreamLight installer includes the Modern Standby client-sleep fix, validated on the target laptop.
 
 | Installer | Local path | Size | SHA-256 |
 | --- | --- | ---: | --- |
@@ -11,4 +11,6 @@ StreamTweak built with `dotnet build StreamTweak.sln -c Release -p:Platform=x64`
 
 StreamLight built with Qt 6.8.3 MSVC 2022 x64, Visual Studio 2022 Build Tools, and 7-Zip. `build-release.ps1` produced `build/release` with 319 files, including `StreamLight.exe`, `Qt6Core.dll`, and `gamecontrollerdb.txt`; Inno Setup 7.1.0 compiled the installer. Its underlying batch script exits unsuccessfully at the obsolete WiX step, which looks for `Moonlight.exe`; the fork's Inno installer compiled successfully from the PowerShell script's release directory.
 
-Client sleep and mouse wake were validated on the target laptop. Before publication, complete the remaining OpenSpec acceptance checks on separate client and host devices: bridge approval, existing shutdown, Host/Both sleep, denial and old-host behavior, active-stream teardown, and host Wake-on-LAN. Do not treat the bridge's `OK` as proof that Windows suspended.
+Client sleep and mouse wake were validated on the target laptop. Before marking these releases stable, complete the remaining OpenSpec acceptance checks on separate client and host devices: bridge approval, existing shutdown, Host/Both sleep, denial and old-host behavior, active-stream teardown, and host Wake-on-LAN. Do not treat the bridge's `OK` as proof that Windows suspended.
+
+Prereleases: [StreamLight Sleep 5.7.1](https://github.com/carlossgv/StreamLight/releases/tag/v5.7.1) and [StreamTweak Sleep 8.4.1](https://github.com/carlossgv/StreamTweak/releases/tag/v8.4.1). The uploaded asset digests match the local SHA-256 values above.
