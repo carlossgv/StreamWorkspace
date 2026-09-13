@@ -18,4 +18,4 @@
 - [x] 3.2 Resolve fork branding, installer IDs, and version metadata so the two installers have intentional upgrade/side-by-side behavior.
 - [ ] 3.3 Build both applications and installers on Windows, inspect packaged files, and smoke-test launch, bridge approval, and existing shutdown behavior.
 - [ ] 3.4 On real Windows client and host devices, test Client/Host/Both sleep, denial and old-host cases, active-stream teardown, manual wake, and host Wake-on-LAN; record outcomes and any hardware limitations.
-- [ ] 3.5 Prepare reviewable release artifacts and concise build/release instructions for both forks; publish only after artifact review and user authorization.
+- [x] 3.5 Prepare reviewable release artifacts and concise build/release instructions for both forks; publish only after artifact review and user authorization.

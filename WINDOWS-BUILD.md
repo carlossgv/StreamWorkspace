@@ -9,9 +9,13 @@ Both applications target Windows 10/11 x64. Build and test StreamTweak on the ho
 - 7-Zip and Inno Setup 7
 - .NET 8 SDK and Windows App SDK dependencies restored by the StreamTweak solution
 
+Visual Studio 2022 Build Tools works in place of the full IDE when the C++ and managed desktop build workloads are installed. StreamLight's `build-arch.bat` discovers Build Tools through `vswhere`. Qt must be the 6.8.3 `win64_msvc2022_64` package. Inno Setup 7 can be installed with `winget install --id JRSoftware.InnoSetup.7 -e`.
+
 ## Build
 
 In Windows PowerShell, from `StreamLight`, run `./build-release.ps1`. The script uses its own checkout path. Override the tool locations with `STREAMLIGHT_QT_BIN` and `STREAMLIGHT_7ZIP_DIR` environment variables if necessary. The script produces a portable directory at `StreamLight/build/release`; it does not compile the installer. Verify that directory contains the freshly built executable, DLLs, QML files, and `gamecontrollerdb.txt`, then compile `StreamLight.iss` with Inno Setup (`ISCC.exe StreamLight.iss`). Its `SourceDir` points to `build/release`.
+
+For an unattended build, set `$env:STREAMLIGHT_NONINTERACTIVE = '1'` before running the script. It then skips the final Explorer window and all `Read-Host` pauses. The underlying batch build can report failure after producing `StreamLight.exe` because its legacy WiX step expects `Moonlight.exe`; the PowerShell script checks for a freshly built executable and performs the Qt deployment and Inno packaging path separately.
 
 From `StreamTweak`, build `StreamTweak.sln` for x64 Release with the .NET 8 SDK and Visual Studio (`dotnet build StreamTweak.sln -c Release -p:Platform=x64`). Check that both `StreamTweakUI/bin/x64/Release` and `StreamTweakService/bin/x64/Release` contain the expected `win-x64` outputs, then compile `Installer.iss` with Inno Setup (`ISCC.exe Installer.iss`). The installer packages both projects' x64 Release outputs.
 
