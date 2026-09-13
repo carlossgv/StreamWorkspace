@@ -1,0 +1,6 @@
+[submodule "StreamLight"]
+	path = StreamLight
+	url = https://github.com/carlossgv/StreamLight.git
+[submodule "StreamTweak"]
+	path = StreamTweak
+	url = https://github.com/carlossgv/StreamTweak.git
